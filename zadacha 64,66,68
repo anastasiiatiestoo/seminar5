@@ -1,0 +1,95 @@
+// Задача 64: Задайте значение N. Напишите программу, которая выведет 
+// все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+
+// N = 5 -> "5, 4, 3, 2, 1"
+// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+
+Console.Write("Enter the number: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+void NaturanNumsToN(int num)
+{
+    if (num == 1)
+    {
+        Console.Write($"{num} ");
+        return;
+    }
+    if (n > 1)
+    {
+        Console.Write($"{num}, ");
+        NaturanNumsToN(num - 1);
+    }
+    else
+    {
+        Console.Write($"{num}, ");
+        NaturanNumsToN(num + 1);
+    }
+}
+
+NaturanNumsToN(n);
+
+// Задача 66: Задайте значения M и N. Напишите программу, которая 
+// найдёт сумму натуральных элементов в промежутке от M до N.
+
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+Console.Write("Enter the value for M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter the value for N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+int SumElement(int m1, int n1)
+{
+    int result = 0;
+    if (n1 == m1)
+    {
+        return result + m1;
+    }
+    if (m1 > n1)
+    {
+        result += SumElement(m1 - 1, n1);
+    }
+    else
+    {
+        result += SumElement(m1 + 1, n1);
+    }
+    return result += m1;
+}
+
+int res = SumElement(m, n);
+Console.WriteLine(res);
+
+
+
+// Задача 68: Напишите программу вычисления функции Аккермана 
+// с помощью рекурсии. Даны два неотрицательных числа m и n.
+
+// m = 3 n = 2 -> A(m,n) = 29
+
+Console.Write("Enter the value for m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter the value for n: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int AckermannFunction(int m, int n)
+{
+    int res = 0;
+    if (m == 0)
+    {
+        res = n+1;
+        return res;
+    }
+    else if (m > 0 && n == 0)
+    {
+        res = AckermannFunction(m -1, 1);
+        return res;
+    }
+    else if (m > 0 && n > 0)
+    {
+        res = AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+        return res;
+    }
+    return res;
+}
+int result = AckermannFunction(m,n);
+Console.WriteLine(result);
